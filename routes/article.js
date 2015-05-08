@@ -6,7 +6,8 @@ var ArticleSchema = new Schema({
 	url: String || { default: "UNKNOWN URL" }
 });
 
-var SUCCESS = 1;
+SUCCESS = 1;
+ERROR = 500;
 
 ArticleSchema.statics.add = function(title, url, callback) {
 	var Article = mongoose.model('Articles');
@@ -15,6 +16,22 @@ ArticleSchema.statics.add = function(title, url, callback) {
 			console.error("Error in saving creating article");
 		} else { 
 			return callback(SUCCESS);
+		}
+	});
+}
+
+ArticleSchema.statics.findAllArticles = function(callback) {
+	var i = 0; 
+	var Article = mongoose.model('Articles');
+	Article.find({}, function(err, articles) { 
+		if(err) {
+			console.error(err);
+			callback(ERROR);
+		} else { 
+			for(i; i < articles.length; i++) { 
+				console.log(articles[i].url);
+			}
+			callback(SUCCESS, articles);
 		}
 	});
 }

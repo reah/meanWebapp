@@ -1,0 +1,51 @@
+body {
+	background: #F1F1F1;
+}
+
+.intro {
+	font-weight: 300;
+	font-size: 1.1em;
+	padding: 0% 0% 3% 0%;
+	text-decoration: none;
+	text-align: center;
+}
+
+.articles-container {
+	border: .1em solid black;
+	padding: 2% 3% 1% 3%;
+	background: white;
+	margin-bottom: 4%;
+}
+
+.article {
+	padding: 0% 0% 2% 0%;
+}
+
+.article-title {
+	font-weight: 300;
+	font-size: 1.4em;
+	padding: 0% 0% 0% 0%;
+	text-decoration: none;
+}
+
+.article-title:hover {
+	text-decoration: none;
+}
+
+.techcrunch {
+	width: 30%;
+	height: auto;
+	margin: 0% 0% -3% 0%;
+}
+
+#kpcb-article {
+	width: 70%;
+	height: auto;
+	margin: 6% 0% 0% 0%;
+}
+
+.google {
+	width: 60%;
+	height: auto;
+	margin: 5% 0% 0% 0%;
+}

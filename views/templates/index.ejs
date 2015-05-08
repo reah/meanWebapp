@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>	
+		<title>Webapp</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="../assets/stylesheets/bootstrap/3.3.4/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="../assets/stylesheets/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+
+		<!-- NAVIGATION BAR -->
+		<nav class="navbar navbar-default navbar-fixed-top navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">Home</a>
+				</div>
+
+				<div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="resume.html">Resume</a></li>
+						<li><a href="articles.html">Articles</a></li>
+						<li><a href="inspiration.html">Inspiration</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="articles">
+				<% articles.forEach( function(article) { %>
+				<a href='<%= article.url %>' target='_blank'><%= article.title %></a><br>
+				<%	}); %>
+			</div>
+		</div>
+
+	</body>
+
+</html>
