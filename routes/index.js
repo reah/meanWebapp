@@ -1,6 +1,8 @@
 var express = require('express');
 var article = require('./article');
+var mongoose = require('mongoose');
 var router = express.Router();
+var ArticleModel = mongoose.model('Articles');
 
 SUCCESS = 1;
 
@@ -23,10 +25,15 @@ router.get('/browse', function(req, res, next) {
 });
 
 router.post('/post', function(req, res, next) { 
-	console.log('HERE');
 	console.log("URL: ", req.body.url);
-	article.add("UNKNOWN TITLE", req.body.url, function(errCode) { 
-		return errHelper(res, errCode);
+	ArticleModel.find({url: req.body.url}, function(err, article) { 
+		if(article.length) { 
+			console.log('article exists');
+		} else { 
+			ArticleModel.add("UNKNOWN TITLE", req.body.url, function(errCode) { 
+				errHelper(res, errCode);
+			});
+		}
 	});
 });
 

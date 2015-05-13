@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>	
-		<title>Webapp</title>
+
+		<title>WebApp</title>
 		<meta charset="utf-8">
+		<meta name="author" content="Reah Miyara and Rafi Lurie">
+		<meta name="description" content="meanWebApp">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="../assets/stylesheets/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="../assets/stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
-
-		<!-- NAVIGATION BAR -->
-		<nav class="navbar navbar-default navbar-fixed-top navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">Home</a>
-				</div>
-
-				<div>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="resume.html">Resume</a></li>
-						<li><a href="articles.html">Articles</a></li>
-						<li><a href="inspiration.html">Inspiration</a></li>
-					</ul>
+		<div class="container-fluid">
+			
+			<!-- HEADER -->
+			<div class="row">
+				<div class="header">
+					<h1> <center>meanWebApp</center> </h1>
 				</div>
 			</div>
-		</nav>
-		<div class="container-fluid">
-			<div class="articles">
-				<% articles.forEach( function(article) { %>
-				<a href='<%= article.url %>' target='_blank'><%= article.title %></a><br>
-				<%	}); %>
+
+			<!-- ARTICLES -->
+			<div class="row">
+				<div class="articles-container col-md-10 col-md-offset-1">
+					<div class="articles">
+						<% articles.forEach( function(article) { %>
+						<!-- <a class='article' href='<%= article.url %>' target='_blank'><%= article.title %></a><br> -->
+						<div class="article col-md-12">
+							<div class="row">
+								<a class='link' href='<%= article.url %>' target='_blank'><%= article.url %></a>
+							</div>
+							<div class="row">
+								<span class="author"> Posted by: Reah Miyara </span>
+							</div>
+						</div>
+						<%	}); %>
+					</div>
+				</div>
 			</div>
 		</div>
 

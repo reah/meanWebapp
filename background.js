@@ -14,5 +14,5 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 
     // send the collected data as JSON
     xhr.send(JSON.stringify(data));
-    alert('posted');
+    // alert('posted');
 });

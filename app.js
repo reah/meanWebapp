@@ -16,6 +16,9 @@ var routes = require('./routes/index');
 
 var app = express();
 
+// declares a static file to use for linking css
+app.use(express.static(__dirname + '/views/assets/stylesheets'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views/templates/'));
 app.set('view engine', 'ejs');
