@@ -11,7 +11,7 @@ ERROR = 500;
 
 ArticleSchema.statics.add = function(title, url, callback) {
 	var Article = mongoose.model('Articles');
-	Article.create({title: title, url: url}, function (err, article) { 
+	Article.create({ title: title, url: url }, function (err, article) { 
 		if(err) { 
 			console.error("Error in saving creating article");
 		} else { 

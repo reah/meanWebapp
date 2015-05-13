@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var db = require('./db');
 
 var connect = db.connection;
-connect.on('error', console.error.bind(console, 'consnection error:'));
+connect.on('error', console.error.bind(console, 'connection error:'));
 connect.once('open', function callback() { 
   console.log('database connected successfully (in app.js)');
 });

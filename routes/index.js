@@ -30,7 +30,7 @@ router.post('/post', function(req, res, next) {
 		if(article.length) { 
 			console.log('article exists');
 		} else { 
-			ArticleModel.add("UNKNOWN TITLE", req.body.url, function(errCode) { 
+			ArticleModel.add(req.body.title, req.body.url, function(errCode) { 
 				errHelper(res, errCode);
 			});
 		}
