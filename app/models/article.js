@@ -6,16 +6,23 @@ var ArticleSchema = new Schema({
 	url: String || { default: "UNKNOWN URL" }
 });
 
-SUCCESS = 1;
-ERROR = 500;
+var SUCCESS = 1;
+var ERROR = 500;
 
 ArticleSchema.statics.add = function(title, url, callback) {
 	var Article = mongoose.model('Articles');
-	Article.create({ title: title, url: url }, function (err, article) { 
-		if(err) { 
-			console.error("Error in saving creating article");
+
+	Article.find({ url: url }, function(err, article) { 
+		if(article.length) { 
+			console.log('article exists');
 		} else { 
-			return callback(SUCCESS);
+			Article.create({ title: title, url: url }, function (err, article) { 
+				if(err) { 
+					console.error("Error in saving creating article");
+				} else { 
+					return callback(SUCCESS, article);
+				}
+			});
 		}
 	});
 }
@@ -28,9 +35,10 @@ ArticleSchema.statics.findAllArticles = function(callback) {
 			console.error(err);
 			callback(ERROR);
 		} else { 
-			for(i; i < articles.length; i++) { 
-				console.log(articles[i].url);
-			}
+			// SHOW URLS SAVED
+			// for(i; i < articles.length; i++) { 
+			// 	console.log(articles[i].url);
+			// }
 			callback(SUCCESS, articles);
 		}
 	});

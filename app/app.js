@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('./db');
+var db = require('../config/db');
 
 var connect = db.connection;
 connect.on('error', console.error.bind(console, 'connection error:'));
@@ -12,15 +12,16 @@ connect.once('open', function callback() {
   console.log('database connected successfully (in app.js)');
 });
 
-var routes = require('./routes/index');
+var routes = require('./routes/controller.js');
 
 var app = express();
 
-// declares a static file to use for linking css
-app.use(express.static(__dirname + '/views/assets/stylesheets'));
+// declares a static file to use for linking css/js
+app.use(express.static(path.join(__dirname, '../views/assets/stylesheets')));
+app.use(express.static(path.join(__dirname, '../views/assets/js')));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views/templates/'));
+app.set('views', path.join(__dirname, '../views/templates/'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -69,6 +70,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

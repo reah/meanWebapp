@@ -15,7 +15,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-        alert(xhr.responseText);
+        xhr.responseText;
         }
     }
     postHelper(xhr, POST_ROUTE, data);
@@ -53,6 +53,3 @@ function postHelper(xhr, url, data) {
     // send the collected data as JSON
     xhr.send(JSON.stringify(data));
 }
-
-
-
