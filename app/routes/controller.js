@@ -36,6 +36,19 @@ router.post('/post', function(req, res, next) {
 	});
 });
 
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  UserSchema.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 // =====================================
 // 			FACEBOOK ROUTES 
 // =====================================
@@ -49,9 +62,9 @@ passport.use(new FacebookStrategy({
     UserSchema.AddUnique(profile, accessToken, function(err, user) {
       if (err) { 
         return done(err); 
-    }
+      }
       console.log('USER: ' + user);
-      return done(user);
+      return done(null, user);
     });
   }
 ));
@@ -68,6 +81,11 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' 
 router.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/browse',
                                       failureRedirect: '/login' }));
+
+router.use(function (err, req, res, next) {
+  console.log(err)
+  next(err)
+});
 
 router.get('/logout', function(req, res){
 	req.logout();
