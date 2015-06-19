@@ -3,7 +3,8 @@ Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
 	title: String || { default: "UNKNOWN TITLE" },
-	url: String || { default: "UNKNOWN URL" }
+	url: String || { default: "UNKNOWN URL" },
+	poster: Array
 });
 
 var SUCCESS = 1;

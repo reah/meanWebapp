@@ -1,10 +1,13 @@
 {
-    "name": "Drive Button",
+    "name": "Read-mate",
     "version": "1.0",
     "manifest_version": 2,
     "description": "Open Google Drive",
+    "icons": { "16": "chrome_ext/icon16.png",
+           "48": "chrome_ext/icon48.png",
+          "128": "chrome_ext/icon128.png" },
     "browser_action": {
-        "default_icon": "chrome_ext/icon.png"
+        "default_icon": "chrome_ext/icon16.png"
     },
     "background": {
         "scripts": [

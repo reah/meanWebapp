@@ -8,9 +8,15 @@ chrome.runtime.onInstalled.addListener(function() {
                                          "id": "context" + context });  
 });
 
+function flashIcon() { 
+    chrome.browserAction.setIcon({path: "chrome_ext/icon_invert16.png"});
+    setTimeout(function() { 
+        chrome.browserAction.setIcon({path: "chrome_ext/icon16.png"});
+    }, 150);
+}
+
 chrome.browserAction.onClicked.addListener(function (tab) {
     var data = { title: tab.title, url: tab.url };
-
     // construct an HTTP request
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -19,6 +25,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         }
     }
     postHelper(xhr, POST_ROUTE, data);
+    flashIcon();
 });
 
 // add click event
